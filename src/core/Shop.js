@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
-import Card from "./Card";
+import SmallCard from "./SmallCard";
 import {getCategories, getFilteredProducts} from "./apiCore";
 import Checkbox from "./Checkbox";
 import RadioBox from "./RadioBox";
@@ -60,7 +60,7 @@ const Shop = () => {
 	const loadMoreButton = () => {
 		return (
 			size > 0 && size >= limit && (
-				<button onClick={loadMore} className="btn btn-warning mb-5">Load more</button>
+				<button onClick={loadMore} className="btn btn-info mb-5">Load more</button>
 			)
 		);
 	};
@@ -110,8 +110,9 @@ const Shop = () => {
 			className="container-fluid"
 		>
 			<div className="row">
-				<div className="col-4">
-					<h4>Filters</h4>
+				<div className="col-2">
+					<h4 className="mt-3 text-center">Filters</h4>
+					<hr />
 					<h6>Categories</h6>
 					<div>
 						<Checkbox 
@@ -128,12 +129,12 @@ const Shop = () => {
 						/>
 					</div>
 				</div>
-				<div className="col-8">
-					<h4 className="mb-4">Products</h4>
+				<div className="col-10 d-grid">
+					<h2 className="mt-1 text-center btn btn-dark disabled">Filtered Products</h2>
 					<div className="row">
 						{filteredResults.map((product, i) => (
-							<div key={i} className="col-4 mb-3">
-								<Card product={product} />
+							<div key={i} className="col-3 mb-3">
+								<SmallCard product={product} />
 							</div>
 						))}
 					</div>

@@ -35,7 +35,7 @@ const Signup = () => {
 
 	const signUpForm = () => (
 		<form>
-			<div className="form-group">
+			<div className="form-group mt-2">
 				<label className="text-muted">Name</label>
 				<input 
 					onChange={ handleChange("name") } 
@@ -59,7 +59,7 @@ const Signup = () => {
 					className="form-control"
 					value={ password } />
 			</div>
-			<button onClick={ clickSubmit }className="btn btn-primary mt-2">Submit</button>
+			<button onClick={ clickSubmit }className="btn btn-primary mt-3">Submit</button>
 		</form>
 	);
 
@@ -85,6 +85,11 @@ const Signup = () => {
 			{ showSuccess() }
 			{ showError() }
 			{ signUpForm() }
+			<div className="mt-2">
+				<span className="text-muted">Already have an account? <Link to="/signin">Sign in</Link>
+				</span>
+			</div>
+
 		</Layout>
 	);
 };

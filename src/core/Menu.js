@@ -29,6 +29,25 @@ const Menu = ({ history }) => (
 					to="/shop">Shop</Link>
 			</li>
 
+			<li className="nav-item">
+				<Link 
+					className="nav-link" 
+					style={isActive(history, "/cart")} 
+					to="/cart">
+					<img 
+						src={cartImage} 
+						width="24" 
+						height="24"
+						className="d-inline-block align-text-top" />
+					{" "}
+						<sup>
+							<small className="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">
+								{itemTotal()}
+							</small>
+						</sup>
+				</Link>
+			</li>
+
 			{/*<li className="nav-item w-50">
 				<Search />
 			</li>*/}
@@ -83,24 +102,7 @@ const Menu = ({ history }) => (
 				</li>
 			)}
 
-			<li className="nav-item ms-auto">
-				<Link 
-					className="nav-link" 
-					style={isActive(history, "/cart")} 
-					to="/cart">
-					<img 
-						src={cartImage} 
-						width="24" 
-						height="24"
-						className="d-inline-block align-text-top" />
-					{" "}
-						<sup>
-							<small className="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">
-								{itemTotal()}
-							</small>
-						</sup>
-				</Link>
-			</li>
+			
 
 		</ul>
 	</div>

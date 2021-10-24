@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Layout from "../core/Layout";
 import { signin, authenticate, isAuthenticated } from "../auth";
 
@@ -35,7 +35,7 @@ const Signin = () => {
 
 	const signInForm = () => (
 		<form>
-			<div className="form-group">
+			<div className="form-group mt-2">
 				<label className="text-muted">Email</label>
 				<input 
 					onChange={ handleChange("email") } 
@@ -51,7 +51,7 @@ const Signin = () => {
 					className="form-control"
 					value={ password } />
 			</div>
-			<button onClick={ clickSubmit } className="btn btn-primary mt-2">Submit</button>
+			<button onClick={ clickSubmit } className="btn btn-primary mt-3">Submit</button>
 		</form>
 	);
 
@@ -91,6 +91,10 @@ const Signin = () => {
 			{ showError() }
 			{ signInForm() }
 			{ redirectUser() }
+			<div className="mt-2">
+				<span className="text-muted">Don't have an account? <Link to="/signup">Sign up</Link>
+				</span>
+			</div>
 		</Layout>
 	);
 };

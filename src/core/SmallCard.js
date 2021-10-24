@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import ShowImage from './ShowImage';
+import ShowThumbnail from './ShowThumbnail';
 import moment from 'moment';
 import { addItem, updateItem, removeItem } from './cartHelpers';
 
-const Card = ({
+const SmallCard = ({
 	product,
 	showViewProductButton = true,
 	showAddToCartButton = true,
@@ -17,15 +17,6 @@ const Card = ({
 	const [redirect, setRedirect] = useState(false);
 	const [count, setCount] = useState(product.count);
 
-	const showViewButton = showViewProductButton => {
-		return (
-			showViewProductButton && (
-			<Link to={`/product/${product._id}`}>
-				<button className="btn btn-sm btn-outline-primary mt-2 mb-2 card-btn-1">View Product</button>
-			</Link>
-			)
-		);
-	};
 	const addToCart = () => {
 		// console.log('added');
 		addItem(product, setRedirect(true));
@@ -40,8 +31,11 @@ const Card = ({
 	const showAddToCartBtn = showAddToCartButton => {
 		return (
 			showAddToCartButton && product.quantity > 0 && (
-			<button onClick={addToCart} className="btn btn-outline-primary rounded-pill mt-2 mb-2 card-btn-1"  disabled={product.quantity < 1}>
-				{product.quantity < 1 ? "Out of stock" : "Add to Cart"}
+			<button 
+				onClick={addToCart} 
+				className="btn btn-sm btn-outline-primary mt-2 mb-2 card-btn-1 rounded-pill" 
+				disabled={product.quantity < 1}>
+					{product.quantity < 1 ? "Out of stock" : "Add to Cart"}
 			</button>
 			)
 		);
@@ -106,33 +100,27 @@ const Card = ({
 	};
 
 	return (
-		<div className="mt-3">
-			<ShowImage item={product} url="product" className="card-img-top"/>
+		<div className="card border border-1 border-dark">
+			<Link to={`/product/${product._id}`} style={{ textDecoration: 'none' }}>
+			<ShowThumbnail item={product} url="product" className="card-img-top"/>
+			</Link>
 			<div className="card-body">
 				{shouldRedirect(redirect)}
 				<h5 className="card-title">{product.name}</h5>
-				<h6 className="card-subtitle mb-2 text-muted">
-					{product.category && product.category.name}
-				</h6>			
-				<p className="card-text">{product.description.substring(0, 100)} </p>
+
 				<ul className="list-group list-group-flush">
 					<li className="list-group-item">$ {product.price.toFixed(2)}</li>
-					
-					<li className="list-group-item">Added {moment(product.createdAt).fromNow()}</li>
 				</ul>
 				{showStock(product.quantity)}
-
-				{showViewButton(showViewProductButton)}
 
 				{showAddToCartBtn(showAddToCartButton)}
 
 				{showRemoveButton(showRemoveProductButton)}
 
 				{showCartUpdateOptions(cartUpdate)}
-			
 			</div>
 		</div>
 	);
 };
 
-export default Card;
+export default SmallCard;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import { read, listRelated } from "./apiCore";
 import Card from "./Card";
+import SmallCard from "./SmallCard";
 
 
 const Product = props => {
@@ -53,10 +54,10 @@ const Product = props => {
 				)}
 			</div>
 			<div className="col-4">
-				<h6>Related Products</h6>
+				<h4 className="mt-3 text-center">Related Products</h4>
 				{relatedProduct.map((p, i) => (
 					<div className="mb-2">
-						<Card key={i} product={p} />
+						<SmallCard key={i} product={p} />
 					</div>
 				))}
 			</div>
