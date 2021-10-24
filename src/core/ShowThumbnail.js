@@ -6,12 +6,12 @@ const ShowThumbnail = ({item, url}) => (
 		<img 
 			src={`${API}/${url}/photo/${item._id}`} 
 			alt={item.name} 
-			className="mb-2" 
+			className="mb-1 mt-3" 
 			style={{
 				height: "370px",
 				width: "370px", 
 				maxWidth: "100%", 
-				objectFit: "cover"				 
+				objectFit: "contain"				 
 			}}
 		/>
 	</div>

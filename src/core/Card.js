@@ -114,7 +114,7 @@ const Card = ({
 				<h6 className="card-subtitle mb-2 text-muted">
 					{product.category && product.category.name}
 				</h6>			
-				<p className="card-text">{product.description.substring(0, 100)} </p>
+				<p className="card-text">{product.description} </p>
 				<ul className="list-group list-group-flush">
 					<li className="list-group-item">$ {product.price.toFixed(2)}</li>
 					

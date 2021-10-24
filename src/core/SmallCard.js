@@ -33,7 +33,7 @@ const SmallCard = ({
 			showAddToCartButton && product.quantity > 0 && (
 			<button 
 				onClick={addToCart} 
-				className="btn btn-sm btn-outline-primary mt-2 mb-2 card-btn-1 rounded-pill" 
+				className="btn btn-sm btn-outline-primary mt-1 mb-1 card-btn-1 rounded-pill" 
 				disabled={product.quantity < 1}>
 					{product.quantity < 1 ? "Out of stock" : "Add to Cart"}
 			</button>
@@ -43,7 +43,7 @@ const SmallCard = ({
 
 	const showStock = quantity => {
 		return quantity > 0 ? (
-			<span className="badge rounded-pill bg-primary position-relative mb-2 me-3">
+			<span className="badge rounded-pill bg-primary position-relative mb-1 me-3">
 			  In Stock
 			 	<span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 				{quantity}
@@ -51,7 +51,7 @@ const SmallCard = ({
 				</span>
 			</span>
 		) : (
-			<span className="badge bg-danger rounded-pill mb-2 me-3">Out of Stock</span>
+			<span className="badge bg-danger rounded-pill mb-1 me-3">Out of Stock</span>
 		);
 	};
 
@@ -67,7 +67,7 @@ const SmallCard = ({
 		return (
 			cartUpdate && (
 			<div>
-				<div className="input-group mb-3">
+				<div className="input-group mb-2">
 					<div className="input-group-prepend">
 						<span className="input-group-text">Adjust Quantity</span>
 					</div>
@@ -100,14 +100,13 @@ const SmallCard = ({
 	};
 
 	return (
-		<div className="card border border-1 border-dark">
+		<div className="shadow p-2 mb-2 bg-body rounded border border-1 border-gray d-grid">
 			<Link to={`/product/${product._id}`} style={{ textDecoration: 'none' }}>
 			<ShowThumbnail item={product} url="product" className="card-img-top"/>
 			</Link>
 			<div className="card-body">
 				{shouldRedirect(redirect)}
-				<h5 className="card-title">{product.name}</h5>
-
+				<h4 className="card-title">{product.name}</h4>
 				<ul className="list-group list-group-flush">
 					<li className="list-group-item">$ {product.price.toFixed(2)}</li>
 				</ul>

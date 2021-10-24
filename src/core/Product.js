@@ -47,20 +47,26 @@ const Product = props => {
 			}
 			className="container-fluid"
 		>
+		<div className="container">
 		<div className="row">
-			<div className="col-8">
+		<div className="col-lg-12">
+			
+			<div className="row">
 				{product &&	product.description && (
 					<Card product={product} showViewProductButton={false}/>
 				)}
 			</div>
-			<div className="col-4">
-				<h4 className="mt-3 text-center">Related Products</h4>
+			<div className="row">
+				<h4 className="mt-2 text-center btn btn-primary disabled">Related Products</h4>
 				{relatedProduct.map((p, i) => (
-					<div className="mb-2">
+					<div className="col-md-4 text-center">
 						<SmallCard key={i} product={p} />
 					</div>
 				))}
 			</div>
+
+		</div>
+		</div>
 		</div>
 		</Layout>
 	);

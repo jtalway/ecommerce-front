@@ -48,10 +48,11 @@ const Cart = () => {
             className="container-fluid"
         >
             <div className="row">
-                <div className="col-4">{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
-
-                <div className="col-8 mt-2">
+                <div className="col-md-8 mt-2">
                     <Checkout products={items} setRun={setRun} run={run} />
+                </div>
+                <div className="col-md-4">
+                    {items.length > 0 ? showItems(items) : noItemsMessage()}
                 </div>
             </div>
         </Layout>

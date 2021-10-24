@@ -4,6 +4,7 @@ import { signout, isAuthenticated } from "../auth";
 import { itemTotal} from "./cartHelpers";
 import Search from "./Search";
 import cartImage from "../assets/images/shopping-cart-24.png";
+import userImage from "../assets/images/user-24.png";
 
 const isActive = (history, path) => {
 	if(history.location.pathname === path) {
@@ -53,40 +54,52 @@ const Menu = ({ history }) => (
 			</li>*/}
 			
 			{ isAuthenticated() && isAuthenticated().user.role === 0 && (
-				<li className="nav-item">
+				<li className="nav-item ms-auto">
 					<Link 
 						className="nav-link" 
 						style={isActive(history, "/user/dashboard")} 
-						to="/user/dashboard">Dashboard</Link>
+						to="/user/dashboard">
+							<img 
+								src={userImage} 
+								width="24" 
+								height="24"
+								className="d-inline-block align-text-top" />
+					</Link>
 				</li>
 			)}
 
 			{ isAuthenticated() && isAuthenticated().user.role === 1 && (
-				<li className="nav-item">
+				<li className="nav-item ms-auto">
 					<Link 
 						className="nav-link" 
 						style={isActive(history, "/admin/dashboard")} 
-						to="/admin/dashboard">Dashboard</Link>
+						to="/admin/dashboard">
+							<img 
+								src={userImage} 
+								width="24" 
+								height="24"
+								className="d-inline-block align-text-top" />
+					</Link>
 				</li>
 			)}
 
 			{ !isAuthenticated() && (
 				<Fragment>
-					<li className="nav-item">
+					<li className="nav-item ms-auto">
 						<Link 
 							className="nav-link" 
 							style={isActive(history, "/signin")} 
-							to="/signin">Signin</Link>
-					</li>
-					<li className="nav-item">
-						<Link 
-							className="nav-link" 
-							style={isActive(history, "/signup")} 
-							to="/signup">Signup</Link>
+							to="/signin">
+								<img 
+									src={userImage} 
+									width="24" 
+									height="24"
+									className="d-inline-block align-text-top" />
+						</Link>
 					</li>
 				</Fragment>
 			)}
-			
+{/*			
 			{ isAuthenticated() && (
 				<li className="nav-item ms-auto">
 					<span 
@@ -100,7 +113,7 @@ const Menu = ({ history }) => (
 					>Signout
 					</span>
 				</li>
-			)}
+			)}*/}
 
 			
 

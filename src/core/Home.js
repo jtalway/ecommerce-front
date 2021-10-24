@@ -42,30 +42,42 @@ const Home = () => {
 			className="container-fluid"
 		>
 		<Search />
-			<div className="shadow p-2 mb-2 bg-body rounded border border-1 border-gray d-grid">
-				<h2 className="mt-1 text-center btn btn-primary disabled">New Arrivals</h2>
-				<div className="d-flex justify-content-center">
-					<div className="row">
+		<div className="container-fluid">
+		<div className="row">
+		<div className="col-md-12 text-center">
+			<div className="d-grid">
+				<h2 className="mt-1 btn btn-primary disabled">New Arrivals</h2>	
+				<div className="container-fluid d-flex">
+					<div className="row mx-auto">
 						{productsByArrival.map((product, i) => (
-							<div key={i} className="col-4 mb-2">
-								<SmallCard product={product} />
-							</div>
+						<div key={i} className="col-md-4 mb-3">
+							<SmallCard product={product} />
+						</div>
 						))}
 					</div>
 				</div>
 			</div>
-			<div className="shadow p-2 mb-2 bg-body rounded border border-1 border-gray d-grid">
-				<h2 className="mt-1 text-center btn btn-primary disabled">Best Sellers</h2>
-				<div className="d-flex justify-content-center">
-					<div className="row">
+		</div>
+		</div>
+		</div>
+		<div className="container-fluid">
+		<div className="row">
+		<div className="col-md-12 text-center">
+			<div className="d-grid">
+				<h2 className="mt-1 btn btn-primary disabled">Best Sellers</h2>	
+				<div className="container-fluid d-flex">
+					<div className="row mx-auto">
 						{productsBySell.map((product, i) => (
-							<div key={i} className="col-4 mb-2">
+							<div key={i} className="col-md-4">
 								<SmallCard product={product} />
 							</div>
 						))}
 					</div>
 				</div>
 			</div>
+		</div>
+		</div>
+		</div>
 		</Layout>
 	);
 	

@@ -71,10 +71,14 @@ const Search = () => {
 				<h4 className="mt-2 mb-2">
 					{searchMessage(searched, results)}
 				</h4>
-				<div className="row">
-					{results.map((product, i) => (
-						<SmallCard key={i} product={product} />
-					))}
+				<div className="container-fluid">
+					<div className="row mx-auto">
+						{results.map((product, i) => (
+						<div key={i} className="col-md-4 mb-3">
+							<SmallCard product={product} />
+						</div>
+						))}
+					</div>
 				</div>
 			</div>
 
@@ -86,7 +90,7 @@ const Search = () => {
 			<form onSubmit={searchSubmit}>
 				<div className="input-group input-group-sm">
 					<select 
-						className="btn btn-secondary dropdown-toggle"
+						className="btn btn-primary dropdown-toggle"
 						data-bs-toggle="dropdown" 
 						aria-expanded="false"
 						onChange={handleChange("category")}>
@@ -103,7 +107,7 @@ const Search = () => {
 						onChange={handleChange("search")}
 						placeholder="Search by product name"
 					/>
-					<button className="input-group-text">Search</button>
+					<button className="btn btn-sm btn-primary input-group-text">Search</button>
 				</div>
 			</form>
 		)
@@ -116,7 +120,7 @@ const Search = () => {
 			<div className="container mt-2 mb-0">
 				{searchForm()}
 			</div>
-			<div className="container-fluid">
+			<div className="container-fluid mb-3">
 				{searchedProducts(results)}
 			</div>
 		</div>

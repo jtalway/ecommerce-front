@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import React, {useState, useEffect, Fragment} from "react";
+import { Link, withRouter } from "react-router-dom";
 import Layout from "../core/Layout";
-import { isAuthenticated } from "../auth";
+import { signout, isAuthenticated } from "../auth";
 import {getPurchaseHistory} from "./apiUser";
 import moment from "moment";
+import userImage from "../assets/images/user-24.png";
 
 const Dashboard = () => {
 
@@ -37,6 +38,22 @@ const Dashboard = () => {
 					<li className="list-group-item">
 						<Link className="nav-link" to={`/profile/${_id}`}>Update Profile</Link>
 					</li>
+					<li className="list-group-item">
+						{ isAuthenticated() && (
+						<Link 
+							className="nav-link" 
+							style={{color: "red"}}
+							to={"/signin"}
+							onClick={() => 
+								signout(() => {
+									history.push("/signin");
+								})
+							}
+						>
+							Signout 
+						</Link>
+						)}
+					</li>
 				</ul>
 			</div>
 		)
@@ -57,7 +74,7 @@ const Dashboard = () => {
 
 	    const purchaseHistory = history => {
         return (
-            <div className="card mb-5">
+            <div className="card mt-5">
                 <h3 className="card-header">Purchase history</h3>
                 <ul className="list-group">
                     <li className="list-group-item">
@@ -92,17 +109,18 @@ const Dashboard = () => {
 	return (
 		<Layout title="Dashboard" description={ `Welcome ${ name }!`} className="container-fluid">
 			<div className="row">
-				<div className="col-3">
+				<div className="col-md-4">
 					{ userLinks() }
 				</div>
-				<div className="col-9">
+				<div className="col-md-4">
 					{ userInfo() }
+				</div>
+				<div className="col-md-4">
 					{ purchaseHistory(history) }
 				</div>
 			</div>
-			
 		</Layout>
 	)
 };
 
-export default Dashboard;
+export default withRouter(Dashboard);

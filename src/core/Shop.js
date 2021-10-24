@@ -109,19 +109,23 @@ const Shop = () => {
 			description="Search and find products of your choice" 
 			className="container-fluid"
 		>
+		<div className="container">
+		<div className="row">
+		<div className="col-lg-12">
 			<div className="row">
-				<div className="col-2">
-					<h4 className="mt-3 text-center">Filters</h4>
-					<hr />
-					<h6>Categories</h6>
+				<h4 className="mt-2 text-center btn btn-dark disabled">Filters</h4>
+				<div className="col-md-6 d-grid">
+					
+					<h6 className="text-center btn btn-sm btn-outline-secondary disabled">Categories</h6>
 					<div>
 						<Checkbox 
 						categories={categories}
 						handleFilters={filters => handleFilters(filters, "category")} 
 						/>
 					</div>
-					<hr />
-					<h6>Price Range</h6>
+				</div>
+				<div className="col-md-6 d-grid">
+					<h6 className="text-center btn btn-sm btn-outline-secondary disabled">Price Range</h6>
 					<div>
 						<RadioBox 
 						prices={prices}
@@ -129,20 +133,22 @@ const Shop = () => {
 						/>
 					</div>
 				</div>
-				<div className="col-10 d-grid">
-					<h2 className="mt-1 text-center btn btn-dark disabled">Filtered Products</h2>
-					<div className="row">
-						{filteredResults.map((product, i) => (
-							<div key={i} className="col-3 mb-3">
-								<SmallCard product={product} />
-							</div>
-						))}
-					</div>
-					<hr />
-					{loadMoreButton()}
-				</div>
 			</div>
-		
+			<div className="row d-grid">
+				<h2 className="mt-1 text-center btn btn-primary disabled">Filtered Products</h2>
+				<div className="row">
+					{filteredResults.map((product, i) => (
+						<div key={i} className="col-md-4">
+							<SmallCard product={product} />
+						</div>
+					))}
+				</div>
+				<hr />
+				{loadMoreButton()}
+			</div>
+		</div>
+		</div>
+		</div>
 		</Layout>
 	);
 };
