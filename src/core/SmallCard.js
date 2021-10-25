@@ -33,9 +33,9 @@ const SmallCard = ({
 			showAddToCartButton && product.quantity > 0 && (
 			<button 
 				onClick={addToCart} 
-				className="btn btn-sm btn-outline-primary mt-1 mb-1 card-btn-1 rounded-pill" 
+				className="btn btn-sm btn-outline-primary mt-1 mb-1 ms-3 card-btn-1 rounded-pill" 
 				disabled={product.quantity < 1}>
-					{product.quantity < 1 ? "Out of stock" : "Add to Cart"}
+					{product.quantity < 1 ? "Sold Out" : "Add to Cart"}
 			</button>
 			)
 		);
@@ -43,7 +43,7 @@ const SmallCard = ({
 
 	const showStock = quantity => {
 		return quantity > 0 ? (
-			<span className="badge rounded-pill bg-primary position-relative mb-1 me-3">
+			<span className="badge rounded-pill bg-primary position-relative mb-1">
 			  In Stock
 			 	<span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 				{quantity}
@@ -51,7 +51,7 @@ const SmallCard = ({
 				</span>
 			</span>
 		) : (
-			<span className="badge bg-danger rounded-pill mb-1 me-3">Out of Stock</span>
+			<span className="badge bg-danger rounded-pill mb-1">Sold Out</span>
 		);
 	};
 

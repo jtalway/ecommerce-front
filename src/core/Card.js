@@ -40,8 +40,8 @@ const Card = ({
 	const showAddToCartBtn = showAddToCartButton => {
 		return (
 			showAddToCartButton && product.quantity > 0 && (
-			<button onClick={addToCart} className="btn btn-outline-primary rounded-pill mt-2 mb-2 card-btn-1"  disabled={product.quantity < 1}>
-				{product.quantity < 1 ? "Out of stock" : "Add to Cart"}
+			<button onClick={addToCart} className="btn btn-outline-primary rounded-pill mt-2 mb-2 ms-3 card-btn-1"  disabled={product.quantity < 1}>
+				{product.quantity < 1 ? "Sold Out" : "Add to Cart"}
 			</button>
 			)
 		);
@@ -49,7 +49,7 @@ const Card = ({
 
 	const showStock = quantity => {
 		return quantity > 0 ? (
-			<span className="badge rounded-pill bg-primary position-relative mb-2 me-3">
+			<span className="badge rounded-pill bg-primary position-relative mb-2">
 			  In Stock
 			 	<span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 				{quantity}
@@ -57,7 +57,7 @@ const Card = ({
 				</span>
 			</span>
 		) : (
-			<span className="badge bg-danger rounded-pill mb-2 me-3">Out of Stock</span>
+			<span className="badge bg-danger rounded-pill mb-2">Sold Out</span>
 		);
 	};
 
@@ -110,16 +110,12 @@ const Card = ({
 			<ShowImage item={product} url="product" className="card-img-top"/>
 			<div className="card-body">
 				{shouldRedirect(redirect)}
-				<h5 className="card-title">{product.name}</h5>
+				<h5 className="card-title">{product.name} </h5>
 				<h6 className="card-subtitle mb-2 text-muted">
 					{product.category && product.category.name}
 				</h6>			
 				<p className="card-text">{product.description} </p>
-				<ul className="list-group list-group-flush">
-					<li className="list-group-item">$ {product.price.toFixed(2)}</li>
-					
-					<li className="list-group-item">Added {moment(product.createdAt).fromNow()}</li>
-				</ul>
+				<h3>$ {product.price.toFixed(2)}</h3>
 				{showStock(product.quantity)}
 
 				{showViewButton(showViewProductButton)}
@@ -129,6 +125,9 @@ const Card = ({
 				{showRemoveButton(showRemoveProductButton)}
 
 				{showCartUpdateOptions(cartUpdate)}
+
+				<hr />
+				<span className="text-muted">Added {moment(product.createdAt).fromNow()}</span>
 			
 			</div>
 		</div>

@@ -5,6 +5,8 @@ import { itemTotal} from "./cartHelpers";
 import Search from "./Search";
 import cartImage from "../assets/images/shopping-cart-24.png";
 import userImage from "../assets/images/user-24.png";
+import homeImage from "../assets/images/house-24.png";
+import shopImage from "../assets/images/shop-24.png";
 
 const isActive = (history, path) => {
 	if(history.location.pathname === path) {
@@ -21,13 +23,25 @@ const Menu = ({ history }) => (
 				<Link 
 					className="nav-link" 
 					style={isActive(history, "/")} 
-					to="/">Home</Link>
+					to="/">
+						<img 
+							src={homeImage} 
+							width="24" 
+							height="24"
+							className="d-inline-block align-text-top" />
+					</Link>
 			</li>
 			<li className="nav-item">
 				<Link 
 					className="nav-link" 
 					style={isActive(history, "/shop")} 
-					to="/shop">Shop</Link>
+					to="/shop">
+						<img 
+							src={shopImage} 
+							width="24" 
+							height="24"
+							className="d-inline-block align-text-top" />
+					</Link>
 			</li>
 
 			<li className="nav-item">
