@@ -91,7 +91,7 @@ const SmallCard = ({
 				removeItem(product._id);
 				setRun(!run); // run useEffect in parent Cart
 				}}
-				className="btn btn-sm btn-outline-danger mt-2 mb-2 me-3"
+				className="btn btn-sm btn-outline-danger mt-2 mb-2 ms-3"
 			>
 				Remove Product
 			</button>

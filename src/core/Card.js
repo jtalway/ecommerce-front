@@ -116,6 +116,7 @@ const Card = ({
 				</h6>			
 				<p className="card-text">{product.description} </p>
 				<h3>$ {product.price.toFixed(2)}</h3>
+				
 				{showStock(product.quantity)}
 
 				{showViewButton(showViewProductButton)}
@@ -126,9 +127,15 @@ const Card = ({
 
 				{showCartUpdateOptions(cartUpdate)}
 
-				<hr />
-				<span className="text-muted">Added {moment(product.createdAt).fromNow()}</span>
-			
+				<ul className="list-group mt-2">
+					<li className="btn btn-outline-secondary disabled">Product Details</li>
+					<li className="list-group-item"><b>Condition</b>: {product.condition}</li>
+					<li className="list-group-item"><b>Rarity</b>: {product.rarity}</li>
+					<li className="list-group-item"><b>Product Line</b>: {product.expansion}</li>
+					<li className="list-group-item"><b>Manufacturer</b>: {product.maker}</li>
+					<li className="list-group-item"><b>Released on</b>: {product.released}</li>
+					<li className="list-group-item"><i>Product added</i>: {moment(product.createdAt).fromNow()}</li>
+				</ul>		
 			</div>
 		</div>
 	);

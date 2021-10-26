@@ -4,6 +4,7 @@ import Layout from './Layout';
 import { getCart } from './cartHelpers';
 import SmallCard from './SmallCard';
 import Checkout from './Checkout';
+import Footer from "./Footer";
 
 const Cart = () => {
     const [items, setItems] = useState([]);
@@ -51,10 +52,11 @@ const Cart = () => {
                 <div className="col-md-8 mt-2">
                     <Checkout products={items} setRun={setRun} run={run} />
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 mb-5">
                     {items.length > 0 ? showItems(items) : noItemsMessage()}
                 </div>
             </div>
+        <Footer />
         </Layout>
     );
 };

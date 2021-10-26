@@ -20,7 +20,12 @@ const UpdateProduct = ({match}) => {
 		error: "",
 		createdProduct: "",
 		redirectToProfile: false,
-		formData: ""
+		formData: "",
+		condition: "",
+		rarity: "",
+		expansion: "",
+		maker: "",
+		released: ""
 	});
 
 	const {user, token} = isAuthenticated();
@@ -37,7 +42,12 @@ const UpdateProduct = ({match}) => {
 		error,
 		createdProduct,
 		redirectToProfile,
-		formData
+		formData,
+		condition,
+		rarity,
+		expansion,
+		maker,
+		released
 	} = values;
 
 	const init = (productId) => {
@@ -54,6 +64,11 @@ const UpdateProduct = ({match}) => {
 					category: data.category._id,
 					shipping: data.shipping,
 					quantity: data.quantity,
+					condition: data.condition,
+					rarity: data.rarity,
+					expansion: data.expansion,
+					maker: data.maker,
+					released: data.released,
 					formData: new FormData()
 				});
 				// load categories
@@ -105,7 +120,12 @@ const UpdateProduct = ({match}) => {
 					loading: false,
 					error: false,
 					redirectToProfile: true,
-					createdProduct: data.name
+					createdProduct: data.name,
+					condition: "",
+					rarity: "",
+					expansion: "",
+					maker: "",
+					released: ""
 				});
 			}
 		});
@@ -118,6 +138,20 @@ const UpdateProduct = ({match}) => {
 				<label className="btn btn-outline-secondary">
 				<input onChange={ handleChange("photo") }type="file" name="photo" accept="image/*" />
 				</label>
+			</div>
+			<div className="form-group">
+				<label className="text-muted">Category</label>
+				<select 
+					onChange={ handleChange("category") } 
+					className="form-control" 
+				>
+					<option>Please select</option>
+						{categories && categories.map((c, i) => (
+							<option key={i} value={c._id}>
+								{c.name}
+							</option>
+						))}
+				</select>
 			</div>
 			<div className="form-group">
 				<label className="text-muted">Name</label>
@@ -146,18 +180,49 @@ const UpdateProduct = ({match}) => {
 				/>
 			</div>
 			<div className="form-group">
-				<label className="text-muted">Category</label>
-				<select 
-					onChange={ handleChange("category") } 
+				<label className="text-muted">Condition</label>
+				<input 
+					onChange={ handleChange("condition") } 
+					type="text" 
 					className="form-control" 
-				>
-					<option>Please select</option>
-						{categories && categories.map((c, i) => (
-							<option key={i} value={c._id}>
-								{c.name}
-							</option>
-						))}
-				</select>
+					value={ condition } 
+				/>
+			</div>
+			<div className="form-group">
+				<label className="text-muted">Rarity</label>
+				<input 
+					onChange={ handleChange("rarity") } 
+					type="text" 
+					className="form-control" 
+					value={ rarity } 
+				/>
+			</div>
+			<div className="form-group">
+				<label className="text-muted">Set/Expansion</label>
+				<input 
+					onChange={ handleChange("expansion") } 
+					type="text" 
+					className="form-control" 
+					value={ expansion } 
+				/>
+			</div>
+			<div className="form-group">
+				<label className="text-muted">Maker</label>
+				<input 
+					onChange={ handleChange("maker") } 
+					type="text" 
+					className="form-control" 
+					value={ maker } 
+				/>
+			</div>
+			<div className="form-group">
+				<label className="text-muted">Released on</label>
+				<input 
+					onChange={ handleChange("released") } 
+					type="text" 
+					className="form-control" 
+					value={ released } 
+				/>
 			</div>
 			<div className="form-group">
 				<label className="text-muted">Quantity</label>

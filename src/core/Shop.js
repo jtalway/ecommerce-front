@@ -5,6 +5,7 @@ import {getCategories, getFilteredProducts} from "./apiCore";
 import Checkbox from "./Checkbox";
 import RadioBox from "./RadioBox";
 import {prices} from "./fixedPrices";
+import Footer from "./Footer";
 
 const Shop = () => {
 	// STATE
@@ -109,9 +110,9 @@ const Shop = () => {
 			description="Search and find products of your choice" 
 			className="container-fluid"
 		>
-		<div className="container">
+		<div className="container-fluid">
 		<div className="row">
-		<div className="col-lg-12">
+		<div className="col-xl-12 col-lg-12">
 			<div className="row">
 				<h4 className="mt-2 text-center btn btn-dark disabled">Filters</h4>
 				<div className="col-md-6 d-grid">
@@ -138,17 +139,17 @@ const Shop = () => {
 				<h2 className="mt-1 text-center btn btn-primary disabled">Filtered Products</h2>
 				<div className="row">
 					{filteredResults.map((product, i) => (
-						<div key={i} className="col-md-4">
+						<div key={i} className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
 							<SmallCard product={product} />
 						</div>
 					))}
 				</div>
-				<hr />
 				{loadMoreButton()}
 			</div>
 		</div>
 		</div>
 		</div>
+		<Footer className="container-fluid"/>
 		</Layout>
 	);
 };

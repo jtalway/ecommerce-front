@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import { read, listRelated } from "./apiCore";
 import Card from "./Card";
 import SmallCard from "./SmallCard";
+import Footer from "./Footer";
 
 
 const Product = props => {
@@ -59,7 +60,7 @@ const Product = props => {
 			<div className="row">
 				<h4 className="mt-2 text-center btn btn-primary disabled">Related Products</h4>
 				{relatedProduct.map((p, i) => (
-					<div className="col-md-4 text-center">
+					<div className="col-md-3 mb-3">
 						<SmallCard key={i} product={p} />
 					</div>
 				))}
@@ -68,6 +69,7 @@ const Product = props => {
 		</div>
 		</div>
 		</div>
+		<Footer />
 		</Layout>
 	);
 };

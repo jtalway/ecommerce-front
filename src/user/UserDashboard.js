@@ -5,6 +5,7 @@ import { signout, isAuthenticated } from "../auth";
 import {getPurchaseHistory} from "./apiUser";
 import moment from "moment";
 import userImage from "../assets/images/user-24.png";
+import Footer from "../core/Footer";
 
 const Dashboard = () => {
 
@@ -109,16 +110,17 @@ const Dashboard = () => {
 	return (
 		<Layout title="Dashboard" description={ `Welcome ${ name }!`} className="container-fluid">
 			<div className="row">
-				<div className="col-md-4">
+				<div className="col-md-4 mb-5">
 					{ userLinks() }
 				</div>
-				<div className="col-md-4">
+				<div className="col-md-4 mb-5">
 					{ userInfo() }
 				</div>
-				<div className="col-md-4">
+				<div className="col-md-4 mb-5">
 					{ purchaseHistory(history) }
 				</div>
 			</div>
+		<Footer />
 		</Layout>
 	)
 };
